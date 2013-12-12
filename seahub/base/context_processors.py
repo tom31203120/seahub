@@ -13,10 +13,6 @@ from seahub.views.modules import get_enabled_mods_by_user, \
     get_available_mods_by_user
 
 try:
-    from seahub.settings import BUSINESS_MODE
-except ImportError:
-    BUSINESS_MODE = False
-try:
     from seahub.settings import SEACLOUD_MODE
 except ImportError:
     SEACLOUD_MODE = False
@@ -54,7 +50,6 @@ def base(request):
         'branding_css': BRANDING_CSS,
         'logo_path': LOGO_PATH,
         'logo_url': LOGO_URL,
-        'business_mode': BUSINESS_MODE,
         'seacloud_mode': SEACLOUD_MODE,
         'cloud_mode': request.cloud_mode,
         'org': org,
