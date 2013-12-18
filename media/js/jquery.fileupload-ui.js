@@ -241,6 +241,10 @@
                         'width',
                         parseInt(data.loaded / data.total * 100, 10) + '%'
                     );
+                    // show 'saving' after progress becomes '100%', modified for files in big size. by lj, Wed Dec 18 15:29:19 CST 2013
+                    if (data.loaded > 0 && data.loaded == data.total) {
+                        data.context.find('.saving-tip').removeClass('hide');
+                    }
                 }
             },
             // Callback for global upload progress events:
