@@ -137,6 +137,8 @@
             },
             // Callback for successful uploads:
             done: function (e, data) {
+                // hide 'saving-tip'. by lj.
+                $('.saving-tip', $(this)).addClass('hide');
                 var that = $(this).data('fileupload'),
                     template;
                 if (data.context) {
@@ -241,10 +243,6 @@
                         'width',
                         parseInt(data.loaded / data.total * 100, 10) + '%'
                     );
-                    // show 'saving' after progress becomes '100%', modified for files in big size. by lj, Wed Dec 18 15:29:19 CST 2013
-                    if (data.loaded > 0 && data.loaded == data.total) {
-                        data.context.find('.saving-tip').removeClass('hide');
-                    }
                 }
             },
             // Callback for global upload progress events:
@@ -261,6 +259,10 @@
                                 ._renderExtendedProgress(data)
                         );
                     });
+                    // show 'saving' after progress becomes '100%', modified for files in big size. by lj, Wed Dec 18 15:29:19 CST 2013
+                    if (data.loaded > 0 && data.loaded == data.total) {
+                        $this.find('.saving-tip').removeClass('hide');
+                    }
             },
             // Callback for uploads start, equivalent to the global ajaxStart event:
             start: function (e) {
